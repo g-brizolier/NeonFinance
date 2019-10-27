@@ -1,0 +1,10 @@
+.chart-control {
+    outline: none !important;
+    border: none !important;
+    color: #354052 !important;
+    width: 100% !important;
+}
+
+.chart-control:hover {
+    background-color:white, !important
+}
