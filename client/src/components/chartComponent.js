@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StockChart from './stockChart'
 import ChartControls from './chartControls'
+import Indicator from './indicator'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -90,28 +91,35 @@ class ChartComponent extends Component {
 
     render () {
         let componentRowStyle = {
-            padding:"10px"
+            padding:"10px",
         }
 
         return (
-            <Col>
-                <Row className="justify-content-center" style={componentRowStyle}>
-                    <StockChart
-                        height={500}
-                        data={this.state.scopedData}
-                        symbol={this.state.symbol} 
-                        colorGradient={this.state.colorGradient} 
-                        type={this.state.chartType}
-                        startDate={this.state.startDate}
-                    />
-                </Row>
-                <Row className="justify-content-center" style={componentRowStyle}>
-                    <ChartControls
-                        colorGradient={this.state.colorGradient}
-                        scopeHandler={this.scopeHandler}
-                    />
-                </Row>
-            </Col>
+            <Row>
+                <Col>
+                    <Row className="justify-content-center" style={componentRowStyle}>
+                        <StockChart
+                            height={500}
+                            data={this.state.scopedData}
+                            symbol={this.state.symbol} 
+                            colorGradient={this.state.colorGradient} 
+                            type={this.state.chartType}
+                            startDate={this.state.startDate}
+                        />
+                    </Row>
+                    <Row className="justify-content-center" style={componentRowStyle}>
+                        <ChartControls
+                            colorGradient={this.state.colorGradient}
+                            scopeHandler={this.scopeHandler}
+                        />
+                    </Row>
+                </Col>
+                <Col>
+                    <Row className="justify-content-center" style={componentRowStyle}>
+                        <Indicator symbol={this.state.symbol}/>
+                    </Row>
+                </Col>
+            </Row>
         );
     }
 }

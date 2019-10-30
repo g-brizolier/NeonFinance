@@ -21,14 +21,14 @@ class chartRow extends Component {
                         symbol: "AAPL",
                         gradient: themeGradients.gradient1
                     },
-                    {
-                        symbol: "MSFT",
-                        gradient: themeGradients.gradient2
-                    },
-                    {
-                        symbol: "SNAP",
-                        gradient: themeGradients.gradient3
-                    }
+                    // {
+                    //     symbol: "MSFT",
+                    //     gradient: themeGradients.gradient2
+                    // },
+                    // {
+                    //     symbol: "SNAP",
+                    //     gradient: themeGradients.gradient3
+                    // }
                 ].map(el => (
                     <ChartComponent
                         symbol={el.symbol}
