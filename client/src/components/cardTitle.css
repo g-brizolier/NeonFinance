@@ -1,13 +1,9 @@
-.card-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.card-title-custom {
+    text-align: center;
 }
 
-.card-title>h2 {
-    margin: 0 auto;
-    margin-bottom: 10%;
+.card-title-custom>h2 {
     display: inline-block;
+    line-height: normal;
     font-size: 34px;
 }

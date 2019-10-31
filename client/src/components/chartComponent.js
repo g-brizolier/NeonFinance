@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import StockChart from './stockChart'
 import ChartControls from './chartControls'
 import Indicator from './indicator'
+import Card from './card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import CardTitle from './cardTitle';
 
 const serverURL = "http://ec2-35-178-212-20.eu-west-2.compute.amazonaws.com:3001"
 
@@ -17,7 +19,9 @@ class ChartComponent extends Component {
             symbol: props.symbol,
             colorGradient: props.colorGradient,
             chartType: props.chartType,
-            startDate: "24-10-2019"
+            startDate: "24-10-2019",
+            indicators: ["SMA", "Gold Cross", "Indicator 1", "Indicator 2", "Indicator 3"],
+            max_indicators: 4
         }
 
         this.scopeHandler = this.scopeHandler.bind(this);
@@ -88,6 +92,14 @@ class ChartComponent extends Component {
           });
     };
 
+    prepareIndicators(arr) {
+        let res = [];
+        for (let i =0; i < this.state.max_indicators; i+=2) {
+            res[i] = [arr[i], arr[i+1]]; // build array of arrays for easier mapping
+        }
+        return res;
+    }
+
 
     render () {
         let componentRowStyle = {
@@ -99,7 +111,8 @@ class ChartComponent extends Component {
                 <Col>
                     <Row className="justify-content-center" style={componentRowStyle}>
                         <StockChart
-                            height={500}
+                            height={600}
+                            width={1000}
                             data={this.state.scopedData}
                             symbol={this.state.symbol} 
                             colorGradient={this.state.colorGradient} 
@@ -115,8 +128,34 @@ class ChartComponent extends Component {
                     </Row>
                 </Col>
                 <Col>
-                    <Row className="justify-content-center" style={componentRowStyle}>
-                        <Indicator symbol={this.state.symbol}/>
+                    <Row>
+                        {this.prepareIndicators(this.state.indicators).map(
+                            (el) => (
+                                <Col>
+                                    {el.map(object => (
+                                        <Row style={componentRowStyle}>
+                                            <Indicator 
+                                            symbol={this.state.symbol}
+                                            type={object}
+                                            percent={35}
+                                            colorGradient={this.state.colorGradient}
+                                            />
+                                        </Row>
+                                    ))}
+                                </Col> 
+                            )
+                        )}
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Row style={componentRowStyle}>
+                                <Card>
+                                    <CardTitle small>
+                                        More...
+                                    </CardTitle>
+                                </Card>
+                            </Row>
+                        </Col>
                     </Row>
                 </Col>
             </Row>

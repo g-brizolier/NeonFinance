@@ -15,6 +15,8 @@ export const themeConstants = {
     greyDark: "#7F8FA4",
     greyDarker: "#354052",
     greyLight: "#90A8CB",
+    orangeDark: "#ff6100",
+    orangeLight: "#ff9900"
     
 }
 
@@ -34,6 +36,10 @@ export const themeGradients = {
     gradient3: {
         start: themeConstants.greenLight,
         stop: themeConstants.greenDark
+    },
+    gradient_halloween: {
+        start: themeConstants.orangeLight,
+        stop: themeConstants.orangeDark
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../node_modules/react-vis/dist/style.css';
-import { XYPlot, XAxis, YAxis, LineSeries, GradientDefs } from 'react-vis'
+import { XYPlot, XAxis, YAxis, LineSeries } from 'react-vis'
 import {themeFonts, themeConstants}  from '../style-constants'
 import CircularProgress from "@material-ui/core/CircularProgress"
 import Card from './card'
@@ -16,11 +16,6 @@ class stockChart extends Component {
       data: [],
       intervalIsSet: false,
       gradient: props.colorGradient,
-      /*TODO: add time scaling capabilities */
-      // period: {
-      //   first:
-      //   last:
-      // }
       dataPoints: 0,
       type: props.type,
       startDate: props.startDate
@@ -70,7 +65,9 @@ class stockChart extends Component {
 
     return (
       <Card isChart={true}>
-            <CardTitle title={this.state.symbol}/>
+            <CardTitle>
+            {this.state.symbol}
+            </CardTitle>
             {
               this.state.data.length <= 0 ?
               <React.Fragment>
@@ -86,12 +83,7 @@ class stockChart extends Component {
               : 
               <React.Fragment>
                 <XYPlot height={this.state.height} width={this.state.width}>
-                  <GradientDefs>
-                    <linearGradient id={this.state.symbol} x1="1" x2="0" y1="0" y2="0">
-                    <stop offset="0%" stopColor={this.state.gradient.start} stopOpacity={1}/>
-                    <stop offset="100%" stopColor={this.state.gradient.stop} stopOpacity={1} />
-                    </linearGradient>
-                  </GradientDefs>
+                  
 
                   <LineSeries curve={'curveMonotoneX'} data={this.state.data} style={{strokeWidth: this.computeStrokeWidth()}} color={`url(#${this.state.symbol})`} animation/>
 

@@ -29,7 +29,7 @@ class ChartControls extends Component {
             <Card>
                 <Row>
                     { scopeValues.map( (buttonData, index) => (
-                    <Col sm={3} key={index}>
+                    <Col xs={3} key={index}>
                         <Button 
                         className="chart-control" 
                         style={buttonStyle} 

@@ -11,7 +11,10 @@ class Indicator extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            symbol: props.symbol
+            symbol: props.symbol,
+            type: props.type,
+            percent: props.percent,
+            gradient: props.colorGradient
         }
     }
 
@@ -20,11 +23,16 @@ class Indicator extends Component {
             <Card>
                 <Row>
                     <Col>
-                        <CardTitle title="SMA" />
+                        <CardTitle small margin> 
+                            {this.state.type}
+                        </CardTitle>
                         <div style={{marginBottom:"-80px"}}>
-                            <Gauge symbol={this.state.symbol}/>
+                            <Gauge 
+                            symbol={this.state.symbol}
+                            percent={this.state.percent}
+                            gradient={this.state.gradient}/>
                         </div>
-                        <p style={{textAlign:"center", bottom: "200px"}}>Strong Sell</p>
+                        <p style={{textAlign:"center"}}>Strong Sell</p>
                     </Col>
                 </Row>
             </Card>
