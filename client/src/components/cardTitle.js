@@ -15,7 +15,7 @@ class CardTitle extends Component {
     render() {
         var style = {}
         this.state.small ? style.fontSize = "25px" : style = {}
-        this.state.margin ? style.marginBottom = "30px" : style = style
+        this.state.margin ? style.marginBottom = "30px" : style.marginBottom = "0px"
         return (
             <Row className="card-title-custom">
                 <Col>
