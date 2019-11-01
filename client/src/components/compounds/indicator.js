@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Gauge from './gauge'
-import Card from './card'
-import CardTitle from './cardTitle'
+import Gauge from '../molecules/gauge'
+import Card from '../atoms/card'
+import CardTitle from '../atoms/cardTitle'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 

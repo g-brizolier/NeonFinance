@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import StockChart from './stockChart'
+import StockChart from '../molecules/stockChart'
 import ChartControls from './chartControls'
 import Indicator from './indicator'
-import Card from './card'
+import Card from '../atoms/card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import CardTitle from './cardTitle';
+import CardTitle from '../atoms/cardTitle';
 
 const serverURL = "http://ec2-35-178-212-20.eu-west-2.compute.amazonaws.com:3001"
 

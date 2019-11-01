@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { themeGradients } from '../style-constants';
+import { themeGradients } from '../../style-constants';
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel'
 import ChartComponent from './chartComponent'

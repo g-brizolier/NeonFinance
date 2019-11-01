@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {themeConstants, themeFonts}  from '../style-constants'
+import {themeConstants, themeFonts}  from '../../style-constants'
 
 
 class Card extends Component {

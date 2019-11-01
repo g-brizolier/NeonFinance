@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {XYPlot, ArcSeries, GradientDefs} from 'react-vis';
-import {themeConstants} from '../style-constants'
+import {themeConstants} from '../../style-constants'
 
 export default class Gauge extends React.Component {
 

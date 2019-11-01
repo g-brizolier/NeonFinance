@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Card from './card'
+import Card from '../atoms/card'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './chartControls.css'
-import {scopeValues} from '../value-constants'
+import {scopeValues} from '../../value-constants'
 
 class ChartControls extends Component {
     constructor(props) {

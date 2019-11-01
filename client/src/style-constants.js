@@ -1,6 +1,6 @@
 export const themeConstants = {
     // Background
-    bgColorLight: "F3F7FF",
+    bgColorLight: "#F3F7FF",
     bgColorDark: "#282B52",
     bgColorDarkDim: "#25284c",
     bgColorDarker: "#251F4C",

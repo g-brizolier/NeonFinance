@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../../node_modules/react-vis/dist/style.css';
-import { XYPlot, XAxis, YAxis, LineSeries } from 'react-vis'
-import {themeFonts, themeConstants}  from '../style-constants'
+import '../../../node_modules/react-vis/dist/style.css';
+import { XYPlot, XAxis, YAxis, LineSeries, Crosshair} from 'react-vis'
+import {themeFonts, themeConstants}  from '../../style-constants'
 import CircularProgress from "@material-ui/core/CircularProgress"
-import Card from './card'
-import CardTitle from './cardTitle'
+import Card from '../atoms/card'
+import CardTitle from '../atoms/cardTitle'
 
 class stockChart extends Component {
   constructor(props) {
@@ -18,7 +18,8 @@ class stockChart extends Component {
       gradient: props.colorGradient,
       dataPoints: 0,
       type: props.type,
-      startDate: props.startDate
+      startDate: props.startDate,
+      crosshairValues: []
     }
   }
 
@@ -52,7 +53,24 @@ class stockChart extends Component {
     }
   }
 
-  // TODO: do something so that data displays more nicely.
+  /**
+   * Event handler for onMouseLeave.
+   * @private
+   */
+  _onMouseLeave = () => {
+    this.setState({crosshairValues: []});
+  };
+
+  /**
+   * Event handler for onNearestX.
+   * @param {Object} value Selected value.
+   * @param {index} index Index of the value in the data array.
+   * @private
+   */
+  _onNearestX = (value, {index}) => {
+    this.setState({crosshairValues: [value]});
+      console.log(this.state.crosshairValues);
+  };
 
 
   render() {
@@ -82,13 +100,23 @@ class stockChart extends Component {
               </React.Fragment>
               : 
               <React.Fragment>
-                <XYPlot height={this.state.height} width={this.state.width}>
-                  
-
-                  <LineSeries curve={'curveMonotoneX'} data={this.state.data} style={{strokeWidth: this.computeStrokeWidth()}} color={`url(#${this.state.symbol})`} animation/>
-
+                <XYPlot 
+                  height={this.state.height} 
+                  width={this.state.width}
+                  onMouseLeave={this._onMouseLeave}
+                >
                   <XAxis style={axisStyle} tickFormat={time => new Date(time).toLocaleDateString()} tickTotal={3}/>
                   <YAxis style={axisStyle} tickFormat={value => `${value}`}/>
+                  <LineSeries 
+                    curve={'curveMonotoneX'} 
+                    data={this.state.data} 
+                    style={{strokeWidth: this.computeStrokeWidth()}} 
+                    color={`url(#${this.state.symbol})`} 
+                    animation
+                    onNearestX={this._onNearestX}
+                  />
+
+                  <Crosshair values={this.state.crosshairValues}/>
 
                 </XYPlot>
               </React.Fragment>
