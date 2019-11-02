@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import StockChart from '../molecules/stockChart'
 import ChartControls from './chartControls'
-import Indicator from './indicator'
-import Card from '../atoms/card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import CardTitle from '../atoms/cardTitle';
-
+import IndicatorGrid from './indicatorGrid'
 const serverURL = "http://ec2-35-178-212-20.eu-west-2.compute.amazonaws.com:3001"
 
 class ChartComponent extends Component {
@@ -20,7 +17,7 @@ class ChartComponent extends Component {
             colorGradient: props.colorGradient,
             chartType: props.chartType,
             startDate: "24-10-2019",
-            indicators: ["SMA", "Gold Cross", "Indicator 1", "Indicator 2", "Indicator 3"],
+            indicators: ["SMA", "Gold Cross", "Indicator 1", "Indicator 2", "Indicator 3", "Indicator 4"],
             max_indicators: 4
         }
 
@@ -92,15 +89,6 @@ class ChartComponent extends Component {
           });
     };
 
-    prepareIndicators(arr) {
-        let res = [];
-        for (let i =0; i < this.state.max_indicators; i+=2) {
-            res[i] = [arr[i], arr[i+1]]; // build array of arrays for easier mapping
-        }
-        return res;
-    }
-
-
     render () {
         let componentRowStyle = {
             padding:"10px",
@@ -128,35 +116,12 @@ class ChartComponent extends Component {
                     </Row>
                 </Col>
                 <Col>
-                    <Row>
-                        {this.prepareIndicators(this.state.indicators).map(
-                            (el) => (
-                                <Col>
-                                    {el.map(object => (
-                                        <Row style={componentRowStyle}>
-                                            <Indicator 
-                                            symbol={this.state.symbol}
-                                            type={object}
-                                            percent={35}
-                                            colorGradient={this.state.colorGradient}
-                                            />
-                                        </Row>
-                                    ))}
-                                </Col> 
-                            )
-                        )}
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Row style={componentRowStyle}>
-                                <Card>
-                                    <CardTitle small>
-                                        More...
-                                    </CardTitle>
-                                </Card>
-                            </Row>
-                        </Col>
-                    </Row>
+                    <IndicatorGrid
+                        symbol={this.state.symbol}
+                        indicators={this.state.indicators}
+                        max_indicators={this.state.max_indicators}
+                        colorGradient={this.state.colorGradient}
+                    />
                 </Col>
             </Row>
         );

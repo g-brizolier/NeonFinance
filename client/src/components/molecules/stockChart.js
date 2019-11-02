@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../../node_modules/react-vis/dist/style.css';
-import { XYPlot, XAxis, YAxis, LineSeries, Crosshair} from 'react-vis'
+import { XYPlot, XAxis, YAxis, LineSeries, Crosshair, GradientDefs} from 'react-vis'
 import {themeFonts, themeConstants}  from '../../style-constants'
 import CircularProgress from "@material-ui/core/CircularProgress"
 import Card from '../atoms/card'
@@ -105,6 +105,12 @@ class stockChart extends Component {
                   width={this.state.width}
                   onMouseLeave={this._onMouseLeave}
                 >
+                  <GradientDefs>
+                    <linearGradient id={this.state.symbol} x1="1" x2="0" y1="0" y2="0">
+                    <stop offset="0%" stopColor={this.state.gradient.start} stopOpacity={1}/>
+                    <stop offset="100%" stopColor={this.state.gradient.stop} stopOpacity={1} />
+                    </linearGradient>
+                  </GradientDefs>
                   <XAxis style={axisStyle} tickFormat={time => new Date(time).toLocaleDateString()} tickTotal={3}/>
                   <YAxis style={axisStyle} tickFormat={value => `${value}`}/>
                   <LineSeries 
@@ -116,7 +122,7 @@ class stockChart extends Component {
                     onNearestX={this._onNearestX}
                   />
 
-                  <Crosshair values={this.state.crosshairValues}/>
+                  {/* <Crosshair values={this.state.crosshairValues}/> */}
 
                 </XYPlot>
               </React.Fragment>

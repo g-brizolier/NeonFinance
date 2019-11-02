@@ -19,6 +19,7 @@ class Indicator extends Component {
     }
 
     render() {
+
         return(
             <Card>
                 <Row>
