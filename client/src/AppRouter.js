@@ -5,7 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Home from "./AppComponent";
+import Home from "./Home";
+import Dashboard from "./Dashboard"
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -64,14 +65,6 @@ function About() {
   return (
     <div>
       <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
     </div>
   );
 }

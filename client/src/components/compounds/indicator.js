@@ -4,6 +4,7 @@ import Card from '../atoms/card'
 import CardTitle from '../atoms/cardTitle'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import {themeGradients} from '../../style-constants'
 
 
 class Indicator extends Component {
@@ -18,7 +19,16 @@ class Indicator extends Component {
         }
     }
 
+    chooseRandomGradient = () => {
+        let keys = Object.keys(themeGradients);
+        let randomGradient = themeGradients[keys[keys.length * Math.random() << 0]];
+        console.log(randomGradient);
+        return randomGradient;
+    }
+
     render() {
+
+        
 
         return(
             <Card>
@@ -33,7 +43,7 @@ class Indicator extends Component {
                             percent={this.state.percent}
                             gradient={this.state.gradient}/>
                         </div>
-                        <p style={{textAlign:"center"}}>Strong Sell</p>
+                            <p style={{textAlign:"center"}}>Strong Sell</p>
                     </Col>
                 </Row>
             </Card>

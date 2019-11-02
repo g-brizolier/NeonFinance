@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-class App extends Component {
+class Home extends Component {
   // initialize our state
   state = {
     data: [],
@@ -33,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

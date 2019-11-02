@@ -13,11 +13,9 @@ class IndicatorGrid extends Component {
             indicators: props.indicators,
             max_indicators: props.max_indicators,
             colorGradient: props.colorGradient,
-            symbol: props.symbol
+            symbol: props.symbol || "AAPL"
         }
     }
-
-
 
     prepareIndicators(arr) {
         let res = [];
@@ -40,9 +38,9 @@ class IndicatorGrid extends Component {
                 <Row>
                     {this.prepareIndicators(this.state.indicators).map(
                         (el) => (
-                            <Col>
+                            <Col key={el}>
                                 {el.map(object => (
-                                    <Row style={componentRowStyle}>
+                                    <Row key={object} style={componentRowStyle}>
                                         <Indicator 
                                         symbol={this.state.symbol}
                                         type={object}
@@ -55,6 +53,9 @@ class IndicatorGrid extends Component {
                         )
                     )}
                 </Row>
+
+                {this.props.symbol ?
+                
                 <Row>
                     <Col>
                         <Row style={componentRowStyle}>
@@ -66,6 +67,9 @@ class IndicatorGrid extends Component {
                         </Row>
                     </Col>
                 </Row>
+                :
+                <div></div>
+            }
             </React.Fragment>
         );
     }
